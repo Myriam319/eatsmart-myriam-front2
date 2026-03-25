@@ -1,47 +1,61 @@
+// Afin de pouvoir avoir acces a mon api j'ai mis une en-tete sur le fichier index.php du dosier eatsmart-sherine
+
 import './style.css'
 
-interface Commande {
-    id:number,
-    nom:string,
-    prix:number,
-    description: string[],
+
+
+interface Article {
+    id: number;
+    nom: string;
+    description: string;
+    prix: number;
+
+}
+
+// Fonction qui récupère les articles depuis l'api ou y'a la BDD
+
+async function fetchArticle(): Promise<Article[]> {
     
-} 
+     const res = await fetch('http://localhost/myriam-api-eatsmart/articles');
+     return await res.json();
+}
+
+ 
+// Fonction principale avec le code qui sera afficherr
+async function init() {
+    console.log("Chargement des données...");
+
+    const articles = await fetchArticle();
+
+    // Affichage dans la console 
+    console.log(articles);
 
 
-const carte: Commande[] = [
-    {id:0,nom: "Anchois 23cm", prix: 7.9, description:["sauce tomate premium, origan,huile d'olive extra vierge,anchois,olive"]},
-    {id:1,nom: "Emmental 23cm", prix: 7.9, description:["sauce tomate premium, origan,huile d'olive extra vierge,emmental,basilic,olive"]},
-    {id:2,nom: "Margherita 23cm", prix: 7.9, description:["sauce tomate premium, origan,huile d'olive extra vierge,emmental,basilic,olive"] },
-];
+    // On précise <HTMLDivElement> pour que TS connaisse les propriétés de la DIV
+    const appDiv = document.querySelector<HTMLDivElement>('#app')
 
+    // "if" est une sécutité indispensable ici
+    if (appDiv) {
+        appDiv.innerHTML= `
+    
+        ${articles.map(c => {
 
-
-carte.forEach((plat, index) => {
-    console.log(`${index + 1}:
-    description: ${plat.description}
-    id: ${plat.id}
-    nom: ${plat.nom}
-    prix ${plat.prix}`);
-         
-});
-
-
-
-const appDiv = document.querySelector<HTMLDivElement>('#app');
-
-if (appDiv) {
-    appDiv.innerHTML = `
-        ${carte.map(p => {
-            let prix: number = p.prix;
+            // Pour chaque article on crée une carte
             return `
-                <div class="card">
-                   <h3><strong>${p.nom}</strong></h3>
-                    <p>${p.description}</p>
-                    <p><strong>Prix : ${prix} €</strong></p>
-                </div>
-            `;
-        }).join('')}
+            <div class="card">
+                <h3>${c.nom}</h2>
+                <p>${c.description}</p>
+                <p><strong> Prix : ${c.prix} €</strong></p>
+                
+            </div>`
+
+            // Utilisation du join pour "coller" tous les éléments du tableau sans aucun séparateur 
+        }).join('')
+    } 
+
     `;
 }
 
+}
+// Affichage 
+init();

@@ -1,5 +1,33 @@
-#app { font-family: sans-serif; max-width: 10000px; margin: auto; }
-.menu-container { display: flex; gap: 20px; flex-wrap: wrap; padding: 20px; }
-.card { border: 1px solid #ddd; padding: 15px; border-radius: 10px; width: 250px; }
-.btn-order { background-color: #27ae60; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
-.sold-out { color: #e74c3c; font-weight: bold; }
+#app { 
+    font-family: sans-serif;      /* Utilise une police simple et moderne pour tout le contenu */
+    max-width: 10000px;           /* Définit une largeur maximale très large pour le conteneur */
+    margin: auto;                 /* Centre le conteneur horizontalement dans la page */
+}
+
+.menu-container { 
+    display: flex;                /* Active Flexbox pour aligner les éléments horizontalement */
+    gap: 20px;                    /* Ajoute un espace de 20px entre chaque carte */
+    flex-wrap: wrap;              /* Permet aux cartes de passer à la ligne si nécessaire */
+    padding: 20px;                /* Ajoute un espace intérieur autour du conteneur */
+}
+
+.card { 
+    border: 1px solid #ddd;       /* Bordure grise claire autour de chaque carte */
+    padding: 15px;                /* Espace intérieur pour aérer le contenu */
+    border-radius: 10px;          /* Coins arrondis pour un style plus doux */
+    width: 250px;                 /* Largeur fixe pour uniformiser les cartes */
+}
+
+.btn-order { 
+    background-color: #27ae60;    /* Couleur verte du bouton */
+    color: white;                 /* Texte en blanc pour le contraste */
+    border: none;                 /* Supprime la bordure par défaut */
+    padding: 10px;                /* Espace intérieur pour agrandir le bouton */
+    border-radius: 5px;           /* Coins arrondis */
+    cursor: pointer;              /* Change le curseur en main au survol */
+}
+
+.sold-out { 
+    color: #e74c3c;               /* Rouge vif pour signaler une rupture de stock */
+    font-weight: bold;            /* Met le texte en gras pour attirer l’attention */
+}
