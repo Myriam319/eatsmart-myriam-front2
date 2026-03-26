@@ -1,33 +1,59 @@
-#app { 
-    font-family: sans-serif;      /* Utilise une police simple et moderne pour tout le contenu */
-    max-width: 10000px;           /* Définit une largeur maximale très large pour le conteneur */
-    margin: auto;                 /* Centre le conteneur horizontalement dans la page */
+/* 1. On s'assure que le conteneur principal autorise l'alignement côte à côte */
+.content-wrapper {
+    display: flex;            /* MAGIE : Met le menu et le panier sur la même ligne */
+    flex-direction: row;      /* Force l'alignement horizontal */
+    align-items: flex-start;  /* Aligne les blocs en haut */
+    gap: 30px;                /* Espace entre le menu et le panier */
+    padding: 20px;
+    max-width: 1400px;        /* Largeur max raisonnable pour ne pas coller aux bords */
+    margin: 0 auto;           /* Centre tout le bloc sur l'écran */
 }
 
-.menu-container { 
-    display: flex;                /* Active Flexbox pour aligner les éléments horizontalement */
-    gap: 20px;                    /* Ajoute un espace de 20px entre chaque carte */
-    flex-wrap: wrap;              /* Permet aux cartes de passer à la ligne si nécessaire */
-    padding: 20px;                /* Ajoute un espace intérieur autour du conteneur */
+/* 2. Le menu (Zone de gauche) */
+.menu-container {
+    flex: 3;                  /* Prend 75% de la largeur */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
 }
+
+/* 3. Le panier (Zone de droite) */
+.cart-container {
+    flex: 1;                  /* Prend 25% de la largeur */
+    min-width: 300px;         /* Empêche le panier de devenir trop écrasé */
+    background: #f9f9f9;
+    padding: 20px;
+    border: 2px solid #2c3e50;
+    border-radius: 8px;
+    position: sticky;         /* Reste visible pendant le scroll */
+    top: 20px;
+}
+
+/* --- Le reste de ton code (Cartes, Boutons, etc.) --- */
 
 .card { 
-    border: 1px solid #ddd;       /* Bordure grise claire autour de chaque carte */
-    padding: 15px;                /* Espace intérieur pour aérer le contenu */
-    border-radius: 10px;          /* Coins arrondis pour un style plus doux */
-    width: 250px;                 /* Largeur fixe pour uniformiser les cartes */
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    /* Supprime width: 250px; pour laisser le grid gérer la largeur ! */
+    background-color: white;
 }
 
 .btn-order { 
-    background-color: #27ae60;    /* Couleur verte du bouton */
-    color: white;                 /* Texte en blanc pour le contraste */
-    border: none;                 /* Supprime la bordure par défaut */
-    padding: 10px;                /* Espace intérieur pour agrandir le bouton */
-    border-radius: 5px;           /* Coins arrondis */
-    cursor: pointer;              /* Change le curseur en main au survol */
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Le bouton prend toute la largeur de la carte */
+    margin-top: 10px;
 }
 
-.sold-out { 
-    color: #e74c3c;               /* Rouge vif pour signaler une rupture de stock */
-    font-weight: bold;            /* Met le texte en gras pour attirer l’attention */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
 }

@@ -4,17 +4,33 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>myriam-eatsmart-front</title>
+    <title>EatSmart - Carte du Restaurant</title>
   </head>
   <body>
     
     <header>
       <h1>EatSmart - Carte du Restaurant</h1>
     </header>
-    
-    <main id="app" class="menu-container"></main> 
-    <script type="module" src="/src/main.ts"></script>
-    
-  </body>
 
+    <div class="content-wrapper">
+        
+        <main id="app" class="menu-container">
+            </main> 
+
+        <aside class="cart-container">
+            <h2>Votre Panier</h2>
+            <div id="cart-items">
+                <p>Votre panier est vide</p>
+            </div>
+            <hr>
+            <div class="cart-total">
+                <strong>Total : <span id="total-prix">0.00</span>€</strong>
+            </div>
+        </aside>
+
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+
+  </body>
 </html>
